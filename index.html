@@ -9,6 +9,7 @@
       href="assets/img/Soil Sense Main.png"
       type="image/icon type"
     />
+
     <meta
       name="description"
       content="SenseLab - Mitti is an IoT device which use to sense various parameter of your farm."
@@ -26,7 +27,7 @@
         margin: 40px;
       }
       .header-logo {
-        width: 7%;
+        width: 70px;
       }
 
       .email-input {
@@ -44,9 +45,10 @@
       }
 
       .submit-btn {
-        width: 30%;
+        width: 150px;
+        text-align: center;
         margin-top: 15px;
-        padding: 10px 30px;
+        padding: 10px 10px;
         border: 1px solid #00b256;
         font-family: "Open Sans", sans-serif;
         font-size: 14px;
@@ -61,20 +63,61 @@
       .submit-btn:focus {
         outline: none;
       }
+
+      .dec-section {
+        width: 50%;
+      }
+
+      .img-section {
+        width: 50%;
+      }
+
+      .main-div {
+        display: flex;
+      }
+
+      .device-img{
+        width: 38%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @media only screen and (max-width: 750px) {
+        .dec-section {
+          width: 100%;
+          margin-top: 5%;
+        }
+
+        body {
+          margin: 10px;
+        }
+
+        .img-section {
+          margin-top: 20px;
+          width: 100%;
+        }
+        .main-div {
+          display: block;
+        }
+        .device-img{
+          width: 50%;
+        }
+      }
     </style>
   </head>
   <body>
     <img class="header-logo" src="./assets/img/Soil Sense Main.png" />
     <span style="vertical-align: top">
       <ul
-        style="display: inline-block;list-style: none; margin-left: -20px; margin-top: 20px"
+        style="display: inline-block;list-style: none; margin-left: -20px; margin-top: 6px"
       >
         <li style="font-size: 24px; color: #202020">SenseLab - Mitti</li>
         <li style="font-size: 16px; color: #585858">Growing Prosperity</li>
       </ul>
     </span>
-    <div style="display: flex; margin-left: 150px; margin-right: 100px ">
-      <div style="width: 50%; margin-top: 5%">
+    <div class="main-div" style="margin-left: 5%; margin-right: 5% ">
+      <div class="dec-section">
         <h1>
           Increce your agriculture production with our device.
         </h1>
@@ -89,12 +132,8 @@
           <input class="submit-btn" type="submit" value="Get Updates" />
         </form>
       </div>
-      <div style="width: 50%;">
-        <img
-          style="float: right; margin-right: 20%"
-          src="./assets/img/Mitti.png"
-          width="40%"
-        />
+      <div class="img-section">
+        <img class="device-img"src="./assets/img/Mitti.png"/>
       </div>
     </div>
   </body>
