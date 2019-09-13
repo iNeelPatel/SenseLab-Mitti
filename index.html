@@ -77,7 +77,7 @@
         display: flex;
       }
 
-      .device-img{
+      .device-img {
         width: 38%;
         display: block;
         margin-left: auto;
@@ -102,7 +102,7 @@
         .main-div {
           display: block;
         }
-        .device-img{
+        .device-img {
           width: 50%;
         }
       }
@@ -124,19 +124,77 @@
           Increce your agriculture production with our device.
         </h1>
         <h3>Launching Soon.</h3>
-        <form>
-          <input
-            class="email-input"
-            type="email"
-            placeholder="Enter your email"
-          />
-          <br />
-          <input class="submit-btn" type="submit" value="Get Updates" />
-        </form>
+        <input
+          class="email-input"
+          type="email"
+          id="emailValue"
+          placeholder="Enter your email"
+        />
+        <br />
+        <div
+          id="errorDiv"
+          style="color: #e04f4f; display: none; font-size: 14px"
+        >
+          Please enter valid email.
+        </div>
+
+        <div id="sucDiv" style="color: #00b256; display: none; font-size: 14px">
+          Thank you! We will give you updates soon.
+        </div>
+
+        <input
+          class="submit-btn"
+          id="submit_btn"
+          type="submit"
+          value="Get Updates"
+        />
       </div>
       <div class="img-section">
-        <img class="device-img"src="./assets/img/Mitti.png"/>
+        <img class="device-img" src="./assets/img/Mitti.png" />
       </div>
     </div>
+    <script src="./assets/js/jquery-3.4.1.min.js"></script>
+    <script>
+      function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+      }
+
+      function sendData() {
+        var email = $("#emailValue").val();
+        $("#errorDiv").css("display", "none");
+        if (isEmail(email)) {
+          $.ajax({
+            type: "POST",
+            url:
+              "https://mitti-backend.herokuapp.com/intrestedEmail?email=" +
+              email +
+              "&source=WebPage",
+            data: "emai=",
+            success: function(data) {
+              $("#sucDiv").css("display", "block");
+            }
+          });
+          $("#sucDiv").css("display", "block");
+          $("#emailValue").val('');
+        } else {
+          $("#sucDiv").css("display", "none");
+          $("#errorDiv").css("display", "block");
+        }
+      }
+
+      $(document).ready(
+        $("#emailValue").keypress(function(event) {
+          var keycode = event.keyCode ? event.keyCode : event.which;
+          if (keycode == "13") {
+            sendData();
+          }
+        })
+      );
+
+      $("#submit_btn").click(function() {
+        sendData();
+      });
+    </script>
   </body>
 </html>
